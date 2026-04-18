@@ -24,7 +24,7 @@ const LoginPanel = ({ onSubmit, inputRef, password, setPassword, time }) => {
         delay: 0.5,
         clearProps: "all"
       });
-      
+
       gsap.from(".login-bg", {
         scale: 1.08,
         filter: "blur(18px)",
@@ -37,7 +37,7 @@ const LoginPanel = ({ onSubmit, inputRef, password, setPassword, time }) => {
 
   const hours = time.getHours();
   const minutes = time.getMinutes();
-  
+
   const weekday = time.toLocaleDateString("en-US", { weekday: "long" });
   const month = time.toLocaleDateString("en-US", { month: "long" });
   const day = time.getDate();
@@ -45,15 +45,15 @@ const LoginPanel = ({ onSubmit, inputRef, password, setPassword, time }) => {
   return (
     <div ref={containerRef} className="absolute inset-0 flex flex-col items-center text-white overflow-hidden">
       {/* Background Image with separate layer to animate scale without clipping items */}
-      <div 
-        className="login-bg absolute inset-0 bg-[url('/images/wallpaper.jpg')] bg-cover bg-center" 
+      <div
+        className="login-bg absolute inset-0 bg-[url('/images/wallpaper.jpg')] bg-cover bg-center"
         fetchpriority="high"
       />
       {/* Overlay */}
       <div className="absolute inset-0 bg-black/20 backdrop-blur-[2px] pointer-events-none" />
 
       {/* Date & Time */}
-      <motion.div 
+      <motion.div
         initial={{ opacity: 0, y: 20, filter: "blur(10px)" }}
         animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
         transition={{ duration: 1, delay: 0.1, ease: [0.22, 1, 0.36, 1] }}
@@ -65,14 +65,14 @@ const LoginPanel = ({ onSubmit, inputRef, password, setPassword, time }) => {
           <NumberFlow value={day} />
         </h2>
         <div className="h-[80px] sm:h-[120px] w-full flex items-center justify-center font-bold text-7xl sm:text-[100px] tracking-tight text-white/95 leading-none">
-          <NumberFlow 
-            value={hours} 
-            format={{ minimumIntegerDigits: 2 }} 
+          <NumberFlow
+            value={hours}
+            format={{ minimumIntegerDigits: 2 }}
           />
           <span className="relative top-[-4px] mx-1 opacity-80">:</span>
-          <NumberFlow 
-            value={minutes} 
-            format={{ minimumIntegerDigits: 2 }} 
+          <NumberFlow
+            value={minutes}
+            format={{ minimumIntegerDigits: 2 }}
           />
         </div>
       </motion.div>
@@ -106,7 +106,7 @@ const LoginPanel = ({ onSubmit, inputRef, password, setPassword, time }) => {
           </button>
         </form>
         <p className="text-white/50 text-xs mt-3 font-medium">
-          Hint: Enter your nickname used to call by your parents
+          Hint: Type anything you think to open the portfolio.
         </p>
       </div>
     </div>
@@ -191,8 +191,8 @@ const LockScreen = () => {
                       className="h-full bg-white rounded-full origin-left"
                       initial={{ scaleX: 0 }}
                       animate={{ scaleX: [0, 0.2, 0.25, 0.65, 0.7, 0.92, 1] }}
-                      transition={{ 
-                        duration: 3.2, 
+                      transition={{
+                        duration: 3.2,
                         times: [0, 0.15, 0.35, 0.55, 0.75, 0.9, 1],
                         ease: "easeInOut"
                       }}
