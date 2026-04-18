@@ -1,0 +1,83 @@
+<!doctype html>
+<html lang="en" style="background: #000;">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/x-icon" href="/favicon.ico" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sruthika | UI/UX Designer</title>
+    <meta name="description" content="Sruthika - UI/UX Designer specialized in creating sleek, interactive digital experiences and user-centric interfaces. Explore my portfolio of innovative design research and high-fidelity prototypes." />
+    <meta name="keywords" content="Sruthika, UI/UX Designer, Portfolio, Interaction Design, User Experience, Figma, Web Design, Creative Designer" />
+    <meta name="author" content="Sruthika" />
+    <meta name="theme-color" content="#000000" />
+    <link rel="preload" as="image" href="/images/wallpaper.jpg" fetchpriority="high" />
+    <link rel="preload" as="image" href="/images/profile-pic.jpg" fetchpriority="high" />
+    
+    <style>
+      body { background: #000; margin: 0; }
+      #preboot {
+        position: fixed;
+        inset: 0;
+        background: #000;
+        z-index: 999999;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+      }
+      .boot-shown #preboot {
+        display: none;
+      }
+      @keyframes bootProgress {
+        0% { width: 0%; }
+        15% { width: 20%; }
+        35% { width: 25%; } /* Soft crawl */
+        55% { width: 65%; } /* Smooth push */
+        75% { width: 70%; } /* Soft crawl */
+        90% { width: 92%; } /* Final push */
+        100% { width: 100%; }
+      }
+      .boot-bar {
+        height: 100%;
+        background: white;
+        border-radius: 9999px;
+        animation: bootProgress 3.2s ease-in-out forwards;
+      }
+    </style>
+    <script>
+      if (sessionStorage.getItem('boot_shown')) {
+        document.documentElement.classList.add('boot-shown');
+      }
+    </script>
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://sruthika.design/" />
+    <meta property="og:title" content="Sruthika | UI/UX Designer" />
+    <meta property="og:description" content="Explore the portfolio of Sruthika, a UI/UX designer dedicated to crafting intuitive, interactive, and high-fidelity digital experiences." />
+    <meta property="og:image" content="/images/avatar.png" />
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image" />
+    <meta property="twitter:url" content="https://sruthika.design/" />
+    <meta property="twitter:title" content="Sruthika | UI/UX Designer" />
+    <meta property="twitter:description" content="Explore the portfolio of Sruthika, a UI/UX designer dedicated to crafting intuitive, interactive, and high-fidelity digital experiences." />
+    <meta property="twitter:image" content="/images/avatar.png" />
+  </head>
+  <body class="bg-black">
+    <div id="preboot">
+      <svg
+        style="width: 80px; height: 80px; fill: white; margin-bottom: 64px;"
+        viewBox="0 0 24 24"
+        xmlns="http://www.w3.org/2000/svg"
+        fetchpriority="high"
+      >
+        <path d="M12.152 6.896c-.948 0-2.415-1.078-3.96-1.04-2.04.027-3.91 1.183-4.961 3.014-2.117 3.675-.546 9.103 1.519 12.09 1.013 1.454 2.208 3.09 3.792 3.039 1.52-.065 2.09-.987 3.935-.987 1.831 0 2.35.987 3.96.948 1.637-.026 2.676-1.48 3.676-2.948 1.156-1.688 1.636-3.325 1.662-3.415-.039-.013-3.182-1.221-3.22-4.857-.026-3.04 2.48-4.494 2.597-4.559-1.429-2.09-3.623-2.324-4.39-2.376-2-.156-3.675 1.09-4.61 1.09zM15.53 3.83c.843-1.012 1.4-2.427 1.245-3.83-1.207.052-2.662.805-3.532 1.818-.78.896-1.454 2.338-1.273 3.714 1.338.104 2.715-.688 3.559-1.701" />
+      </svg>
+      <div style="width: 224px; height: 3px; background: rgba(255,255,255,0.2); border-radius: 9999px; overflow: hidden;">
+        <div class="boot-bar"></div>
+      </div>
+    </div>
+    <div id="root"></div>
+    <script type="module" src="/src/main.jsx"></script>
+  </body>
+</html>

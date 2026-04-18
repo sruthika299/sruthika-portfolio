@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://sruthika.design/sitemap.xml
