@@ -1,16 +1,33 @@
-# React + Vite
+# Sruthika Portfolio 🚀
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Welcome to my personal portfolio repository! This project showcases my skills, projects, and experience as a UI/UX Designer. The portfolio is designed as a modern macOS-inspired interactive experience, highlighting my expertise in user-centric design and high-fidelity prototyping.
 
-Currently, two official plugins are available:
+## Features 🌟
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+- **macOS Interface**: A unique, interactive desktop environment with windows, dock, and folder navigation.
+- **Project Showcase**: Detailed case studies including JBL Redesign, Vivid Lux, and Pattio, featuring designs and live demos.
+- **Skills**: A comprehensive list of my technical expertise, including design software, prototyping tools, and user research methodologies.
+- **Gallery**: A curated collection of design inspiration and visual experiments.
+- **Interactive Boot Flow**: A custom, polished loading sequence inspired by Apple's boot process.
+- **Responsive Design**: Optimized for seamless viewing on desktops, tablets, and mobile devices.
 
-## React Compiler
+## Technologies Used 🛠️
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+- **Frontend**: React.js, Framer Motion, GSAP, Tailwind CSS, Lucide React
+- **Development**: Vite, Node.js, npm
+- **Design Tools**: Figma, Sketch, Adobe XD, Protopie
+- **Version Control**: Git, GitHub
 
-## Expanding the ESLint configuration
+## Preview Image 📸
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+![Portfolio Preview](preview.png)
+
+## Contact 📬
+
+Feel free to reach out for collaboration, job opportunities, or feedback:
+- **Email**: sruthika384@gmail.com
+- **GitHub**: [github.com/sruthika299](https://github.com/sruthika299)
+- **LinkedIn**: [linkedin.com/in/sruthika-k-144389331](https://www.linkedin.com/in/sruthika-k-144389331/)
+- **Instagram**: [instagram.com/sruthxxa__](https://www.instagram.com/sruthxxa__/)
+
+Thank you for visiting my portfolio repository! Contributions and suggestions are welcome via pull requests or issues on this repository.
