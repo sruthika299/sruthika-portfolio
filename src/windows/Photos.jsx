@@ -61,7 +61,7 @@ const ImageWithLoader = ({ src, className, alt, showText = false, spinnerSize = 
 
 const Photos = () => {
     const { closeWindow, openWindow } = useWindowStore();
-    const [activeTab, setActiveTab] = useState('Library');
+    const [activeTab, setActiveTab] = useState('All Certificates');
     const [isMaximized, setIsMaximized] = useState(false);
     const [searchQuery, setSearchQuery] = useState('');
     const [viewMode, setViewMode] = useState('grid');
@@ -74,7 +74,7 @@ const Photos = () => {
     const contentRef = useRef(null);
 
     // Navigation history
-    const [history, setHistory] = useState(['Library']);
+    const [history, setHistory] = useState(['All Certificates']);
     const [historyIdx, setHistoryIdx] = useState(0);
     const canGoBack = historyIdx > 0;
     const canGoForward = historyIdx < history.length - 1;
@@ -122,14 +122,11 @@ const Photos = () => {
         showToast(TAG_COLORS[next] ? '🏷️ Tag applied' : '🏷️ Tag removed');
     };
 
-    // Initial images data
+    // Initial images data (Certificates)
     const INITIAL_IMAGES = [
-        { id: 'g1', url: '/images/gal-1.jpeg', span: 'col-span-2 row-span-2', name: 'Childhood sruthika', categories: ['Library', 'Memories'], size: '26 KB', date: 'Oct 12, 2023 at 4:20 PM' },
-        { id: 'g2', url: '/images/gal-2.jpeg', span: 'col-span-1 row-span-2', name: 'Childhood group pic', categories: ['Library', 'Closed ones'], size: '77 KB', date: 'Sep 28, 2023 at 11:15 AM' },
-        { id: 'g4', url: '/images/gal-4.jpeg', span: 'col-span-2 row-span-2', name: 'Cadence Crew', categories: ['Library', 'People', 'Closed ones'], size: '963 KB', date: 'Dec 01, 2023 at 5:10 PM' },
-        { id: 'g3', url: '/images/gal-3.jpeg', span: 'col-span-1 row-span-2', name: 'With Shivani', categories: ['Library', 'Memories', 'Closed ones'], size: '153 KB', date: 'Nov 05, 2023 at 8:45 PM' },
-        { id: 'g5', url: '/images/gal-5.jpeg', span: 'col-span-2 row-span-2', name: 'CSBS Good Souls', categories: ['Library', 'Memories', 'Closed ones'], size: '900 KB', date: 'Feb 15, 2024 at 10:20 AM' },
-        { id: 'g6', url: '/images/gal-6.jpeg', span: 'col-span-1 row-span-2', name: 'With Maddy', categories: ['Library', 'Memories'], size: '801 KB', date: 'Mar 10, 2024 at 12:30 PM' },
+        { id: 'g1', url: '/images/gal-1.jpg', name: 'Reinforcement Learning in Business Applications', issuer: 'Retech Solutions Pvt. Ltd.', type: 'Proficiency', categories: ['All Certificates', 'Courses', 'Proficiency'], size: '664 KB', date: 'May 15, 2024' },
+        { id: 'g2', url: '/images/gal-2.jpg', name: 'UI/UX Internship – SOTT Academy', issuer: 'SOTT Academy', type: 'Internship', categories: ['All Certificates', 'Internship'], size: '479 KB', date: 'Dec 20, 2024' },
+        { id: 'g3', url: '/images/gal-3.jpg', name: 'Java Full Stack – Digital Skills Readiness', issuer: 'Wipro TalentNext', type: 'Course Completion', categories: ['All Certificates', 'Courses'], size: '243 KB', date: 'Oct 31, 2025' },
     ];
 
     // Category-mapped gallery images with persistence
@@ -171,7 +168,7 @@ const Photos = () => {
     };
 
     const filteredImages = imagesData.filter(img => 
-        (activeTab === 'Library' || img.categories.includes(activeTab)) &&
+        (activeTab === 'All Certificates' || img.categories.includes(activeTab)) &&
         img.name.toLowerCase().includes(searchQuery.toLowerCase())
     );
 
@@ -219,10 +216,10 @@ const Photos = () => {
     }, [activeTab]);
 
     const tabs = [
-        { id: 'Library', icon: '/icons/gicon1.svg', label: 'Library' },
-        { id: 'Memories', icon: '/icons/gicon2.svg', label: 'Memories' },
-        { id: 'Closed ones', icon: '/icons/gicon5.svg', label: 'Closed ones' },
-        { id: 'People', icon: '/icons/gicon4.svg', label: 'People' },
+        { id: 'All Certificates', icon: '/icons/gicon1.svg', label: 'All Certificates' },
+        { id: 'Internship', icon: '/icons/work.svg', label: 'Internship' },
+        { id: 'Courses', icon: '/icons/gicon2.svg', label: 'Courses' },
+        { id: 'Proficiency', icon: '/icons/info.svg', label: 'Proficiency' },
         { id: 'Favorites', icon: '/icons/gicon5.svg', label: 'Favorites' },
     ];
 
@@ -379,7 +376,7 @@ const Photos = () => {
                     <Sidebar collapsible="none" className="w-[180px] md:w-[200px] bg-[#f6f6f6]/80 border-r border-gray-200/60 h-full">
                         <SidebarContent className="custom-scrollbar">
                             <SidebarGroup>
-                                <SidebarGroupLabel className="text-[11px] font-semibold text-gray-400/80 tracking-widest uppercase py-3 px-4 border-b-0 mt-3">Photos</SidebarGroupLabel>
+                                <SidebarGroupLabel className="text-[11px] font-semibold text-gray-400/80 tracking-widest uppercase py-3 px-4 border-b-0 mt-3">Certificates</SidebarGroupLabel>
                                 <SidebarGroupContent className="px-2">
                                     <SidebarMenu className="gap-0.5">
                                         {tabs.map((tab) => (
@@ -417,7 +414,7 @@ const Photos = () => {
                         </SidebarContent>
                     </Sidebar>
 
-                    <main className="flex-1 bg-white overflow-y-auto custom-scrollbar p-6 relative">
+                    <main className="flex-1 overflow-y-auto custom-scrollbar p-5 relative" style={{ background: '#f0f0f0' }}>
                         <AnimatePresence mode="wait">
                             {filteredImages.length === 0 ? (
                                 <motion.div 
@@ -451,54 +448,65 @@ const Photos = () => {
                                     )}
                                 </motion.div>
                             ) : viewMode === 'grid' ? (
-                                <motion.div 
+                                <motion.div
                                     key="grid"
                                     variants={containerVariants}
                                     initial="hidden"
                                     animate="visible"
                                     exit="hidden"
-                                    ref={contentRef} 
-                                    className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 h-fit pb-12 will-change-transform"
+                                    ref={contentRef}
+                                    className="grid grid-cols-2 lg:grid-cols-3 gap-x-4 gap-y-6 pb-10 will-change-transform"
                                 >
-                                    {filteredImages.map((img) => (
-                                        <motion.div
-                                            key={img.id}
-                                            variants={itemVariants}
-                                            layout
-                                            transition={{ layout: { duration: 0.4, ease: [0.23, 1, 0.32, 1] } }}
-                                            className={`photo-item relative group cursor-pointer overflow-hidden rounded-2xl shadow-sm border border-gray-100 group/image ${img.span}`}
-                                            onClick={() => handleImageClick(img.url)}
-                                            whileHover={{ 
-                                                y: -6, 
-                                                scale: 1.02,
-                                                boxShadow: '0 12px 24px -10px rgba(0,0,0,0.15)',
-                                                transition: { duration: 0.3, ease: "easeOut" }
-                                            }}
-                                        >
-                                            <ImageWithLoader 
-                                                src={img.url} 
-                                                alt={img.name}
-                                                showText={img.span.includes('col-span-2')}
-                                                spinnerSize={img.span.includes('row-span-2') ? "h-8 w-8" : "h-6 w-6"}
-                                                className="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-105" 
-                                            />
-                                            <div className="absolute inset-0 bg-black/0 group-hover:bg-black/10 transition-colors duration-500" />
-                                            
-                                            {/* Favorite Button (Grid) */}
-                                            <button 
-                                                onClick={(e) => toggleFavorite(e, img.id)}
-                                                className="absolute top-3 right-3 p-1.5 rounded-full bg-white/20 backdrop-blur-md border border-white/30 text-white opacity-0 group-hover:opacity-100 transition-all duration-300 hover:bg-white/40 hover:scale-110 active:scale-95"
+                                    {filteredImages.map((img) => {
+                                        const isFav = img.categories.includes('Favorites');
+                                        return (
+                                            <motion.div
+                                                key={img.id}
+                                                variants={itemVariants}
+                                                layout
+                                                transition={{ layout: { duration: 0.35, ease: [0.23, 1, 0.32, 1] } }}
+                                                className="group flex flex-col cursor-pointer"
+                                                onClick={() => handleImageClick(img.url)}
                                             >
-                                                <Heart 
-                                                    size={14} 
-                                                    fill={img.categories.includes('Favorites') ? '#fb7185' : 'none'} 
-                                                    className={img.categories.includes('Favorites') ? 'text-rose-400 transition-colors' : 'text-white/80 transition-colors'} 
-                                                />
-                                            </button>
-
-                                            <div className="absolute inset-x-0 bottom-0 p-4 translate-y-4 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-300 pointer-events-none" />
-                                        </motion.div>
-                                    ))}
+                                                {/* Image — macOS Photos style: rounded, blue ring on hover */}
+                                                <div
+                                                    className="relative w-full overflow-hidden rounded-lg transition-all duration-[420ms] ease-[cubic-bezier(0.25,0.46,0.45,0.94)]"
+                                                    style={{ aspectRatio: '4/3', background: '#e8e8e8' }}
+                                                >
+                                                    <ImageWithLoader
+                                                        src={img.url}
+                                                        alt={img.name}
+                                                        spinnerSize="h-5 w-5"
+                                                        className="w-full h-full object-cover object-top"
+                                                    />
+                                                    {/* macOS-style blue selection ring on hover */}
+                                                    <div className="absolute inset-0 rounded-lg ring-[2.5px] ring-inset ring-transparent group-hover:ring-[rgba(0,122,255,0.45)] transition-all duration-[420ms] ease-[cubic-bezier(0.25,0.46,0.45,0.94)] pointer-events-none" />
+                                                    {/* Favorite heart — top-right, only on hover */}
+                                                    <button
+                                                        onClick={(e) => toggleFavorite(e, img.id)}
+                                                        className="absolute top-2 right-2 flex items-center justify-center w-6 h-6 rounded-full bg-black/30 backdrop-blur-[6px] opacity-0 group-hover:opacity-100 transition-opacity duration-[350ms] ease-out hover:bg-black/50 active:scale-90"
+                                                        style={{ WebkitBackdropFilter: 'blur(6px)' }}
+                                                    >
+                                                        <Heart
+                                                            size={12}
+                                                            fill={isFav ? '#ff375f' : 'none'}
+                                                            className={isFav ? 'text-[#ff375f]' : 'text-white'}
+                                                            strokeWidth={isFav ? 0 : 2}
+                                                        />
+                                                    </button>
+                                                </div>
+                                                {/* Caption — macOS Photos style: tight, minimal */}
+                                                <div className="mt-1.5 px-0.5">
+                                                    <p className="text-[11.5px] font-medium text-[#1d1d1f] leading-tight truncate tracking-[-0.01em]">
+                                                        {img.name}
+                                                    </p>
+                                                    <p className="text-[10.5px] text-[#86868b] mt-0.5 tracking-tight">
+                                                        {img.issuer} · {img.date}
+                                                    </p>
+                                                </div>
+                                            </motion.div>
+                                        );
+                                    })}
                                 </motion.div>
                             ) : (
                                 <motion.div 
@@ -548,7 +556,7 @@ const Photos = () => {
                                                     </div>
                                                     <span className="font-medium truncate group-hover:text-blue-600 transition-colors tracking-tight text-gray-700">{img.name}</span>
                                                 </div>
-                                                <div className="w-[15%] text-gray-400 font-normal">JPEG</div>
+                                                <div className="w-[15%] text-gray-400 font-normal">{img.type || 'Certificate'}</div>
                                                 <div className="w-[15%] text-gray-400 font-normal">{img.size}</div>
                                                 <div className="w-[25%] text-gray-400 font-normal truncate">{img.date}</div>
                                             </motion.div>
